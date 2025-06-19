@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h2>Lista de Produtos</h2>
+    <a th:href="@{/produtos/novo}">Novo Produto</a> |
+    <a th:href="@{/logout}">Sair</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Marca</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${produtos}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.nome}"></td>
+                <td th:text="${p.descricao}"></td>
+                <td th:text="${p.marca}"></td>
+                <td>
+                    <a th:href="@{/produtos/editar/{id}(id=${p.id})}">✏️ Editar</a> |
+                    <a th:href="@{/produtos/deletar/{id}(id=${p.id})}">🗑️ Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/logout}">Sair da sessão</a>
+</body>
+
+</html>
